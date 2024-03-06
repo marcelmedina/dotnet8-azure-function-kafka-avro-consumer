@@ -62,11 +62,9 @@ namespace KafkaAvroConsumer
 
             foreach (var eventData in events)
             {
-                var eventValue = JObject.Parse(eventData);
-
                 var person = JsonConvert.DeserializeObject<ExtraOrdinaryPerson>(eventData);
 
-                logger.LogInformation($"C# Kafka trigger function processed a message: {eventValue}");
+                logger.LogInformation($"C# Kafka trigger function processed a message: {person}");
             }
         }
     }

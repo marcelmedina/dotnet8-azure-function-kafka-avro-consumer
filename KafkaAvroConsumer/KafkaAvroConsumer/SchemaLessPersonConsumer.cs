@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace KafkaAvroConsumer
 {
-    public class PersonConsumer
+    public class SchemaLessPersonConsumer
     {
         private readonly ILogger _logger;
 
