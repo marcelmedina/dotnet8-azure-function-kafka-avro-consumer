@@ -8,8 +8,6 @@ namespace KafkaAvroConsumer
 {
     public class SchemaLessPersonConsumer
     {
-        private readonly ILogger _logger;
-
         [Function(nameof(RunWithBytesAsync))]
         public static async Task RunWithBytesAsync(
         [KafkaTrigger("%BootstrapServers%",
@@ -21,7 +19,7 @@ namespace KafkaAvroConsumer
                   IsBatched = true,
                   ConsumerGroup = "$Default")] byte[][] data, FunctionContext context)
         {
-            var logger = context.GetLogger("KafkaFunction");
+            var logger = context.GetLogger(nameof(RunWithBytesAsync));
 
             foreach (var eventData in data)
             {

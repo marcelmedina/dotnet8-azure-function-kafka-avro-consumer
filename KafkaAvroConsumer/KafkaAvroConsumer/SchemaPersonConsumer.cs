@@ -2,14 +2,11 @@ using com.example;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace KafkaAvroConsumer
 {
     public class SchemaPersonConsumer
     {
-        private readonly ILogger _logger;
-
         const string ExtraOrdinaryPersonSchema = @"{
   ""type"": ""record"",
   ""name"": ""ExtraOrdinaryPerson"",
@@ -38,11 +35,6 @@ namespace KafkaAvroConsumer
   ]
 }";
 
-        public SchemaPersonConsumer(ILoggerFactory loggerFactory)
-        {
-            _logger = loggerFactory.CreateLogger<SchemaPersonConsumer>();
-        }
-
         [Function(nameof(RunWithStrings))]
         public static void RunWithStrings(
         [KafkaTrigger("%BootstrapServers%",
@@ -58,7 +50,7 @@ namespace KafkaAvroConsumer
                   SchemaRegistryPassword = "%SchemaRegistryApiSecret%",
                   ConsumerGroup = "$Default")] string[] events, FunctionContext context)
         {
-            var logger = context.GetLogger("KafkaFunction");
+            var logger = context.GetLogger(nameof(RunWithStrings));
 
             foreach (var eventData in events)
             {
