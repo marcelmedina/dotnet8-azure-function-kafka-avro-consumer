@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "KafkaAvroConsumer": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7073",
+      "launchBrowser": false
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AzureWebJobs.RunWithBytesAsync.Disabled": false, // enable one or the other, not both
+    "AzureWebJobs.RunWithStrings.Disabled": true, // enable one or the other, not both
+
+    "BootstrapServers": "tenant.region.cloud.confluent.cloud:9092",
+    "SchemaRegistryUrl": "https://tenant.region.cloud.confluent.cloud",
+    "SaslUsername": "key",
+    "SaslPassword": "secret",
+    "SchemaRegistryApiKey": "schemaKey",
+    "SchemaRegistryApiSecret": "schemaSecret",
+    "SecurityProtocol": "SaslSsl",
+    "SaslMechanism": "Plain",
+    "Topic": "person.private.dev"
+  }
+}
